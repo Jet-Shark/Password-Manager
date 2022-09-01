@@ -7,6 +7,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AuthFormComponent } from './auth/auth-form/auth-form.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboardComponent },
@@ -21,11 +23,13 @@ const routes: Routes = [
     HeaderComponent,
     DashboardComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AuthFormComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
