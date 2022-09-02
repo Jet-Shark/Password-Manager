@@ -9,8 +9,9 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { AuthGuard } from "./auth/auth.guard";
+import { AuthInterceptorService } from "./auth/auth-interceptor.service";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -34,7 +35,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
