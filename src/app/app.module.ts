@@ -10,9 +10,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { AuthGuard } from "./auth/auth.guard";
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: DashboardComponent },
+  { path: '', pathMatch: 'full', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: ''}
