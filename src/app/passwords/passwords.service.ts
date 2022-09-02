@@ -7,6 +7,7 @@ import { Subject, tap } from "rxjs";
 export class PasswordsService {
   passwordsChanged = new Subject<Password[]>();
   private passwords: Password[] = [];
+  loaderVisible = new Subject<boolean>();
 
   constructor(private http: HttpClient) {}
 
@@ -24,11 +25,12 @@ export class PasswordsService {
     ).subscribe();
   }
 
-  storePasswords() {
+  private storePasswords() {
+    this.loaderVisible.next(true);
     return this.http.put<Password[]>(
       'https://password-manager-5c89d-default-rtdb.europe-west1.firebasedatabase.app/passwords.json',
       this.passwords.slice()
-    ).subscribe();
+    ).pipe(tap(() => this.loaderVisible.next(false))).subscribe();
   }
 
   addPassword(password: Password) {

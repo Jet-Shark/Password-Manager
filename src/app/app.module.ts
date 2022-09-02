@@ -14,6 +14,7 @@ import { AuthGuard } from "./auth/auth.guard";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
 import { PasswordsComponent } from "./passwords/passwords.component";
 import { PasswordItemComponent } from "./passwords/password-item/password-item.component";
+import { LoaderComponent } from './shared/loader/loader.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -31,7 +32,8 @@ const routes: Routes = [
     LoginComponent,
     AuthFormComponent,
     PasswordsComponent,
-    PasswordItemComponent
+    PasswordItemComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
