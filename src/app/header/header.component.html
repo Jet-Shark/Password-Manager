@@ -3,14 +3,19 @@
     <a class="navbar-brand" [routerLink]="['/']">Password manager</a>
     <div class="navbar-collapse">
       <div class="navbar-nav">
-        <a
-          class="nav-link"
-          [routerLink]="['/']"
-          [routerLinkActive]="'active'"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >Dashboard</a>
-        <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="'active'">Login</a>
-        <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="'active'">Register</a>
+        <ng-container *ngIf="signedIn">
+          <a
+            class="nav-link"
+            [routerLink]="['/']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >Dashboard</a>
+          <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="'active'" (click)="onSignOut()">Logout</a>
+        </ng-container>
+        <ng-container *ngIf="!signedIn">
+          <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="'active'">Login</a>
+          <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="'active'">Register</a>
+        </ng-container>
       </div>
     </div>
   </div>
