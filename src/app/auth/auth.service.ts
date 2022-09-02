@@ -148,6 +148,7 @@ export class AuthService {
         errorMessage = 'This password is not correct.';
         break;
     }
+    alert(errorMessage);
     return throwError(() => new Error(errorMessage));
   }
 }
