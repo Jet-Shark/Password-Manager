@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { AuthGuard } from "./auth/auth.guard";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
+import { PasswordsComponent } from "./passwords/passwords.component";
+import { PasswordItemComponent } from "./passwords/password-item/password-item.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -27,7 +29,9 @@ const routes: Routes = [
     DashboardComponent,
     RegisterComponent,
     LoginComponent,
-    AuthFormComponent
+    AuthFormComponent,
+    PasswordsComponent,
+    PasswordItemComponent
   ],
   imports: [
     BrowserModule,
